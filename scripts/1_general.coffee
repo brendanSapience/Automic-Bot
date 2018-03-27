@@ -1,15 +1,18 @@
 # Description:
 #   Handle Help Options
-#   also: internet speed checks and critical system status
 #
 # Commands:
-#   hubot 
 #   hubot 
 #
 # Author:
 #   Bren Sapience <brendan.sapience@gmail.com>
 
 utils = require './utils'
+
+AE_HOST = process.env.AUTOMIC_HOSTNAME_OR_IP
+REST_PORT = process.env.AUTOMIC_AE_REST_PORT
+REST_PATH = process.env.AUTOMIC_AE_REST_PATH
+CLIENT = process.env.AUTOMIC_AE_CLIENT
 
 getReleaseNotes = (message) ->
   message += " *Mar 27 - 2018*: _Initial Release, search for objects per type and per folder_\n"
@@ -30,8 +33,9 @@ module.exports = (robot) ->
     hellos = ['Hi', 'Yo', 'Whats up', 'hey', 'salut', 'hello']
     greeting = msg.random hellos
     username = msg.message.user.name
-    msg.send "#{greeting} #{username}, if you need help at any moment just type in 'help me'"
- 
+    Resp = "#{greeting} #{username}, if you need help at any moment just type in 'help me'"
+    Resp = Resp + "\n Current System: \n\t Client: *#{CLIENT}* \n\t Host: *#{AE_HOST}* \n\t Rest Port: *#{REST_PORT}* \n\t Rest Path: *#{REST_PATH}*"
+    msg.send Resp
   ####
   # Help Me
   ####
@@ -56,7 +60,7 @@ module.exports = (robot) ->
 
 
   ####
-  # Help Me EVERYTHING
+  # Help Me Everything
   ####
   robot.hear /(?:a little|some|can you)*(?: )*help(?: )*(?:please|me|me please)* with (?:everything|all)/i, (msg) ->
     message = ""

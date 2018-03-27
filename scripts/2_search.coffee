@@ -1,7 +1,6 @@
 # Description:
-#   Handle Help Options
+#   Handle Search Options
 #  
-#
 # Commands:
 #   hubot 
 #
