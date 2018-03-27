@@ -1,9 +1,9 @@
 # Automic-Bot
 Bot using the Automic Rest API
 
-# *Target*: **Automic Engine v12.1 and Official Rest API**
+ *Target*: **Automic Engine v12.1 and Official Rest API**
 
-*Chat App*: This bot is built on Hubot and for **Slack** specifically, however it can be ported easily to any other chat app
+ *Chat App*: This bot is built on Hubot and for **Slack** specifically, however it can be ported easily to any other chat app
 
 ## **How to Deploy it:**
   1. Make sure your system has **all prerequisites to run "Hubot"** (a quick google query will yield many tutorials on this)
