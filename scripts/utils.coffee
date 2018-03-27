@@ -22,11 +22,28 @@ module.exports.apicallpost = (urlext,MyJsonData,msg,robot,processbody) ->
   url = "#{HTTP_OR_HTTPS}#{AE_HOST}:#{REST_PORT}#{REST_PATH}#{CLIENT}#{urlext}"
 
   data = JSON.stringify(MyJsonData)
-
+  console.log(data)
   robot.http(url)
     .header('Authorization',auth)
     .header('Content-Type','application/json')
     .post(data) (err,res,jsonbody) ->
       JsonResp = JSON.parse(jsonbody)
+
       processbody(msg,JsonResp)
 
+module.exports.convertEpochToSpecificTimezone = (edate) ->
+  
+  date = new Date(edate);
+  Year = date.getFullYear();
+  Month = date.getMonth()+1;
+  if Month < 10
+    Month = "0"+Month
+  Day = date.getDate();
+  if Day < 10
+    Day = "0"+Day
+  hours = date.getHours();
+  minutes = "0" + date.getMinutes();
+  seconds = "0" + date.getSeconds();
+
+  formattedTime = Year+ '-' +Month+'-'+Day+' ' +hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+  return formattedTime;

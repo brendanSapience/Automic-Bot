@@ -7,8 +7,9 @@ export REDIS_URL=redis://127.0.0.1:6379/prefix
 export AUTOMIC_HOSTNAME_OR_IP=AEHOSTNAME
 export AUTOMIC_AE_REST_PORT=8088
 export AUTOMIC_AE_REST_PATH=/ae/api/v1/
-export AUTOMIC_AE_CLIENT=100
+export MAX_RESULTS=100
 
+export AUTOMIC_AE_CLIENT=100
 export AUTOMIC_AE_LOGIN=MyLogin/DEPT
 export AUTOMIC_AE_PWD=MyPassword
 #http://34.203.181.44:8088/ae/api/v1/100/search
