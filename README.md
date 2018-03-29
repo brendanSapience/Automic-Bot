@@ -17,4 +17,6 @@ Bot using the Automic Rest API
   => Say **"hi"** and say **"help"**, the bot will guide you through what can be done.
   => ask for the release notes (**"get release notes"**) to see the latest changes
   
-  
+## **Recent Changes:**
+  March 29th: Added handling of executions
+  March 27th: Added handling of object searches
