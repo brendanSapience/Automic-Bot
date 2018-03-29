@@ -14,9 +14,9 @@ Bot using the Automic Rest API
   6. **Start the bot** (on Linux / Unix / Mac: From within the Repo folder: ./bin/hubot --adapter slack)
   
 ## **How to Use it:**
-  => Say **"hi"** and say **"help"**, the bot will guide you through what can be done.
-  => ask for the release notes (**"get release notes"**) to see the latest changes
+  * Say **"hi"** and say **"help"**, the bot will guide you through what can be done.
+  * Ask for the Release Notes (**"get release notes"**) to see the latest changes
   
 ## **Recent Changes:**
-  March 29th: Added handling of executions
-  March 27th: Added handling of object searches
+  * March 29th: Added handling of executions
+  * March 27th: Added handling of object searches
