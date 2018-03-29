@@ -14,19 +14,34 @@ CLIENT = process.env.AUTOMIC_AE_CLIENT
 LOGIN = process.env.AUTOMIC_AE_LOGIN
 PWD = process.env.AUTOMIC_AE_PWD
 
-# Runs an API standard Call.. This (all calls) leverage the Home API (abstracted Rest API that provides interfaces to all other APIs)
+# Runs an API standard Call.. POST
 module.exports.apicallpost = (urlext,MyJsonData,msg,robot,processbody) ->
-  username = msg.message.user.name
+
   auth = 'Basic ' + new Buffer(LOGIN + ':' + PWD).toString('base64')
 
   url = "#{HTTP_OR_HTTPS}#{AE_HOST}:#{REST_PORT}#{REST_PATH}#{CLIENT}#{urlext}"
 
   data = JSON.stringify(MyJsonData)
-  console.log(data)
+  #console.log(data)
   robot.http(url)
     .header('Authorization',auth)
     .header('Content-Type','application/json')
     .post(data) (err,res,jsonbody) ->
+      JsonResp = JSON.parse(jsonbody)
+
+      processbody(msg,JsonResp)
+
+# Runs an API standard Call.. GET
+module.exports.apicallget = (urlext,msg,robot,processbody) ->
+  
+  auth = 'Basic ' + new Buffer(LOGIN + ':' + PWD).toString('base64')
+
+  url = "#{HTTP_OR_HTTPS}#{AE_HOST}:#{REST_PORT}#{REST_PATH}#{CLIENT}#{urlext}"
+
+  robot.http(url)
+    .header('Authorization',auth)
+    .header('Content-Type','application/json')
+    .get() (err,res,jsonbody) ->
       JsonResp = JSON.parse(jsonbody)
 
       processbody(msg,JsonResp)
