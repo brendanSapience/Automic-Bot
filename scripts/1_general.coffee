@@ -9,12 +9,15 @@
 
 utils = require './utils'
 
+HTTP_OR_HTTPS = process.env.HTTP_OR_HTTPS
 AE_HOST = process.env.AUTOMIC_HOSTNAME_OR_IP
 REST_PORT = process.env.AUTOMIC_AE_REST_PORT
 REST_PATH = process.env.AUTOMIC_AE_REST_PATH
 CLIENT = process.env.AUTOMIC_AE_CLIENT
+url = "#{HTTP_OR_HTTPS}#{AE_HOST}:#{REST_PORT}#{REST_PATH}#{CLIENT}"
 
 getReleaseNotes = (message) ->
+  message += " *Apr 6 - 2018*: _Improved help a bit, '!!' repeat command available_\n"
   message += " *Mar 29 - 2018*: _Added executions handling_\n"
   message += " *Mar 27 - 2018*: _Initial Release, search for objects per type and per folder_\n"
 
@@ -49,7 +52,9 @@ module.exports = (robot) ->
     greeting = msg.random hellos
     username = msg.message.user.name
     Resp = "#{greeting} #{username}, if you need help at any moment just type in 'help me'"
-    Resp = Resp + "\n Current System: \n\t Client: *#{CLIENT}* \n\t Host: *#{AE_HOST}* \n\t Rest Port: *#{REST_PORT}* \n\t Rest Path: *#{REST_PATH}*"
+    Resp = Resp + "\n Current Configuration: \n\t Client: *#{CLIENT}* \n\t Host: *#{AE_HOST}* \n\t Rest Port: *#{REST_PORT}* \n\t Rest Path: *#{REST_PATH}* \n\t Http or https: *#{HTTP_OR_HTTPS}* \n\t Base URL: #{url}"
+    Resp = Resp + "\n\nAlso, *you can repeat your last command at any time by simply typing in * _'!!'_\n"
+
     msg.send Resp
   ####
   # Help Me
@@ -101,3 +106,8 @@ module.exports = (robot) ->
     message = "\n"
     message = message + getReleaseNotes(message)
     msg.reply message
+
+
+  robot.hear /what\selse\scan\syou\sdo/i, (msg) ->
+    msg.send "Not much.. Im learning spanish but it will take a while.. \n Check out this *cool map* of technologies Automic can stitch together: https://automic.com/continuous-delivery-tools"
+
