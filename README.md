@@ -18,5 +18,6 @@ Bot using the Automic Rest API
   * Ask for the Release Notes (**"get release notes"**) to see the latest changes
   
 ## **Recent Changes:**
+  * April 6th: Improved help, now you can use '!!' to rerun the last command
   * March 29th: Added handling of executions
   * March 27th: Added handling of object searches
